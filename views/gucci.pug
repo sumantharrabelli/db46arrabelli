@@ -2,37 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to the Gucci  pug
-   div(class="container-fluid")
-        div(class="row")
-            -
-                let gucci = [
-                    {
-                        "Itemname": "GG Marmont super mini bag",
-                        "Quantity": 14,
-                        "price": 1100
-                    },
-                    {
-                        "Itemname": "GG Black backpack",
-                        "Quantity": 19,
-                        "price": 2100
-                    },
-                    {
-                        "Itemname": "Gucci 100 cotton T-shirt",
-                        "Quantity": 20,
-                        "price": 650
-                    },                   
-                ]
-            each v,index in gucci       
-                    div(class="col-sm-2" onclick=`buy(${index})`) #{v.Itemname}
-                    br
-                    br
-                    div(class="col-sm-2" onclick=`buy(${index})`) #{v.Quantity}
-                    br
-                    br
-                    div(class="col-sm-2" onclick=`buy(${index})`) #{v.price}
-  script.                
-        function buy(intemNo)
-        {
-              alert(`you purchased Item ${intemNo + 1}`)
-        }
+  - let items = results; 
+  - let o;
+  script.
+    function buy(x){
+      alert('Purchased Item: ' + x)
+   } 
+  div(class='container-fluid')
+    div(class='row')
+      each o, c in items 
+        div(class='col-sm-3' onclick=`buy(${c})`) #{o}
