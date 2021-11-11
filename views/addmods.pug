@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} Js
+  P Sumanth is  learning how to use pug templates to dynamically generate web pages on the server side.
+  p Table with the given number of rows and columns where each cell adds the row and column and mods by the number of rows.
+  p With Rows = #{query.rows} and Columns = #{query.cols} we except
+    -
+        rows= Number(query.rows)
+        col= Number(query.cols)
+    if !Number.isInteger(rows)
+        p below mentioned rows are not accurate 
+    else if !Number.isInteger(col)
+        p below mentioned columns are not appropriate
+    else
+       table           
+            - for(let x=0; x<rows; x++) {
+               tr
+                 - for(let y=x; y<col-1; y++) {
+                    td=y
+                 -}        
+                 -   for(let z=0; z<=x ; z++){
+                      td=z
+                 -}      
+            - }
