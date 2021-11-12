@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var Gucci = require("./models/gucci"); 
+var gucci = require("./models/gucci"); 
 
 const connectionString =  
 process.env.MONGO_CON;
@@ -17,6 +17,7 @@ var usersRouter = require('./routes/users');
 var gucciRouter = require('./routes/gucci');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var gucci = require("./models/gucci");
 var resourceRouter = require('./routes/resource');
 
 var app = express();
@@ -36,7 +37,7 @@ app.use('/users', usersRouter);
 app.use('/gucci', gucciRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector',selectorRouter);
-app.use('/',resourceRouter);
+app.use('/esource',resourceRouter  );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,19 +57,19 @@ app.use(function(err, req, res, next) {
 
 async function recreateDB(){ 
   // Delete everything 
-  await Gucci.deleteMany(); 
+  await gucci.deleteMany(); 
  
-  let instance1 = new Gucci({
+  let instance1 = new gucci({
     Itemname:"GG Marmont super mini bag",  
     Quantity:2,
     price:1200
   }); 
-  let instance2 = new Gucci({
+  let instance2 = new gucci({
     Itemname:"GG Black backpack",  
     Quantity:2,
     price:5044
   }); 
-  let instance3 = new Gucci({
+  let instance3 = new gucci({
     Itemname:"GG 100 cotton T-shirt",  
     Quantity:2,
     price:650

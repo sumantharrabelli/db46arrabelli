@@ -1,6 +1,6 @@
 // API for our resources
 
-exports.api = function(req, res) {
+exports.api = function (req, res) {
 
     res.write('[');
 

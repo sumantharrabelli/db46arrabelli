@@ -12,3 +12,6 @@ block content
     div(class='row')
       each o, c in items 
         div(class='col-sm-3' onclick=`buy(${c})`) #{o}
+          p #{o.Itemname}
+          p #{o.price}
+          p #{o.Quantity}
