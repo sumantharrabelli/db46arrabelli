@@ -1,5 +1,5 @@
 var express = require('express');
-const gucci_controlers = require('../controllers/gucci');
+const gucci_controllers = require('../controllers/gucci');
 var router = express.Router();
 
 ///* GET home page. */
@@ -8,7 +8,6 @@ var router = express.Router();
 //});
 
 /* GET guccis */
-router.get('/', gucci_controlers.gucci_view_all_Page);
-router.get('/gucci/:id', gucci_controlers.gucci_detail);
-router.get('/gucci/:id', gucci_controlers.gucci_delete);
+router.get('/', gucci_controllers.gucci_view_all_Page);
+router.get('/gucci/:id', gucci_controllers.gucci_detail);
 module.exports = router;

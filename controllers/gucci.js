@@ -1,9 +1,16 @@
 var gucci = require('../models/gucci');
 
-
-// for a specific gucci. 
-exports.gucci_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: gucci detail: ' + req.params.id);
+// List of all gucci
+exports.gucci_list = async function (req, res) {
+    try {
+        thegucci = await gucci.find();
+        res.send(thegucci);
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}}`);
+    }
+    res.send('NOT IMPLEMENTED: gucci list');
 };
 
 // for a specific gucci.
@@ -18,7 +25,7 @@ exports.gucci_detail = async function (req, res) {
         res.send(`{"error": document for id ${req.params.id} not found`);
     }
     res.send('NOT IMPLEMENTED: gucci list');
-}
+};
 
 // Handle gucci create on POST. 
 exports.gucci_create_post = async function (req, res) {
@@ -65,22 +72,10 @@ exports.gucci_update_put = async function (req, res) {
     res.send('NOT IMPLEMENTED: gucci list');
 };
 
-// List of all guccis 
-exports.gucci_list = async function (req, res) {
-    try {
-        theguccis = await gucci.find();
-        res.send(theguccis);
-    }
-    catch (err) {
-        res.status(500);
-        res.send(`{"error": ${err}}`);
-    }
-};
-
 exports.gucci_view_all_Page = async function (req, res) {
     try {
         thegucci = await gucci.find();
-        res.render('gucci', { title: 'gucci Search Results', results: thegucci });
+        res.render('gucci', { title: 'gucci Search results', results: thegucci });
     }
     catch (err) {
         res.status(500);

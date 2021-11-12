@@ -2,30 +2,29 @@ var express = require('express');
 var router = express.Router(); 
  
 // Require controller modules. 
-var api_controller = require('../contollers/api'); 
-var gucci_controller = require('../contollers/gucci'); 
+var api_controller = require('../controllers/api'); 
+var gucci_controller = require('../controllers/gucci'); 
  
 /// API ROUTE /// 
  
 // GET resources base. 
-router.get('/resource', api_controller.api); 
+router.get('/', api_controller.api); 
  
 /// GUCCI ROUTES /// 
  
 // POST request for creating a Gucci.  
-router.post('/resource/gucci', gucci_controller.gucci_create_post); 
+router.post('/gucci', gucci_controller.gucci_create_post); 
  
 // DELETE request to delete Gucci. 
-router.delete('/resource/guccis/:id', gucci_controller.gucci_delete); 
+router.delete('/gucci/:id', gucci_controller.gucci_delete); 
  
 // PUT request to update Gucci. 
-router.put('/resource/guccis/:id', 
-gucci_controller.gucci_update_put); 
+router.put('/gucci/:id', gucci_controller.gucci_update_put); 
  
 // GET request for one Gucci. 
-router.get('/resource/guccis/:id', gucci_controller.gucci_detail); 
+router.get('/gucci/:id', gucci_controller.gucci_detail); 
  
 // GET request for list of all Gucci items. 
-router.get('/resource/guccis', gucci_controller.gucci_list); 
+router.get('/gucci', gucci_controller.gucci_list); 
  
 module.exports = router;

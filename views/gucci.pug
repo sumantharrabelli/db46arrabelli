@@ -2,16 +2,16 @@ extends layout
 
 block content
   h1= title
-  - let items = results; 
-  - let o;
+  - let results = thegucci
+  div(class="container-fuild")
+    div(class="row")
+      each result,index in results
+        div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
+          p #{result.Itemname}
+          p #{result.price}
+          p #{result.Quantity}
+
   script.
-    function buy(x){
-      alert('Purchased Item: ' + x)
-   } 
-  div(class='container-fluid')
-    div(class='row')
-      each o, c in items 
-        div(class='col-sm-3' onclick=`buy(${c})`) #{o}
-          p #{o.Itemname}
-          p #{o.price}
-          p #{o.Quantity}
+    function buy(element){
+      alert(`You purchased item is ${element+1}.`)
+    }

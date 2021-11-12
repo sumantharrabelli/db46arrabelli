@@ -5,5 +5,4 @@ const gucciSchema = mongoose.Schema({
     price: Number
 })
 
-module.exports = mongoose.model("gucci",
-    gucciSchema)
+module.exports = mongoose.model("gucci", gucciSchema)
