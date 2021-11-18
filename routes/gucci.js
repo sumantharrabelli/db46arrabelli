@@ -10,4 +10,7 @@ var router = express.Router();
 /* GET guccis */
 router.get('/', gucci_controllers.gucci_view_all_Page);
 router.get('/gucci/:id', gucci_controllers.gucci_detail);
+/* GET detail gucci page */
+router.get('/detail', gucci_controllers.gucci_view_one_Page);
+
 module.exports = router;

@@ -44,9 +44,17 @@ exports.gucci_create_post = async function (req, res) {
     }
 };
 
-// Handle gucci delete form on DELETE. 
-exports.gucci_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: gucci delete DELETE ' + req.params.id);
+// Handle gucci delete on DELETE.
+exports.gucci_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await gucci.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
 //Handle gucci update form on PUT.
@@ -80,5 +88,19 @@ exports.gucci_view_all_Page = async function (req, res) {
     catch (err) {
         res.status(500);
         res.send(`{"error": ${err}}`);
+    }
+};
+
+// Handle a show one view with id specified by query
+exports.gucci_view_one_Page = async function (req, res) {
+    console.log("single view for id " + req.query.id)
+    try {
+        result = await gucci.findById(req.query.id)
+        res.render('guccidetail',
+            { title: 'gucci Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
 };
