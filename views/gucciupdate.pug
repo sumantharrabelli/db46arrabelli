@@ -2,10 +2,13 @@ extends layout
  
 block content 
   h1= title 
-  - let gucciid = toShow._id 
-  - let guccitype = toShow.Itemname 
-  - let quantityq = toShow.quantity
-  - let pricep = toShow.price
+  if (toShow == null) 
+    h2 No instance to update  
+  else 
+    - let gucciid = toShow._id 
+    - let guccitype = toShow.Itemname 
+    - let quantityq = toShow.quantity
+    - let pricep = toShow.price
 
   div.row(class='mb-2') 
     div.mr-1 ID is 
