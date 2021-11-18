@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const gucciSchema = mongoose.Schema({
     Itemname: String,
-    Quantity: String,
+    quantity: String,
     price: Number
 })
 

@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  - let gucciid = toShow._id 
+  - let guccitype = toShow.Itemname 
+  - let quantityq = toShow.quantity
+  - let pricep = toShow.price
+
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{gucciid} 
+  - let actionid = "/resource/gucci/" + gucciid 
+ 
+  form(id='gucciForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.gucciAttr(for='gucci_type ') gucci type 
+        input#gucci_type(type='text', name='Itemname', value= guccitype ) 
+    div.form-group 
+        label.gucciAttr(for='quantity') gucci quantity
+        input#quantity(type='text', name='quantity', value= quantityq ) 
+    div.form-group 
+        label.gucciAttr(for='price') gucci price
+        input#price(type='number', name='price', value= pricep) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['gucciForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target))
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    });

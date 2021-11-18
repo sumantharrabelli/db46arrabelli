@@ -27,17 +27,17 @@ async function recreateDB() {
 
   let instance1 = new gucci({
     Itemname: "GG Marmont super mini bag",
-    Quantity: 2,
+    quantity: 2,
     price: 1200
   });
   let instance2 = new gucci({
     Itemname: "GG Black backpack",
-    Quantity: 2,
+    quantity: 2,
     price: 5044
   });
   let instance3 = new gucci({
     Itemname: "GG 100 cotton T-shirt",
-    Quantity: 2,
+    quantity: 2,
     price: 650
   });
   instance1.save(function (err, doc) {

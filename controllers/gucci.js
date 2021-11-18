@@ -32,7 +32,7 @@ exports.gucci_create_post = async function (req, res) {
     console.log(req.body)
     let document = new gucci();
     document.Itemname = req.body.Itemname;
-    document.Quantity = req.body.Quantity;
+    document.quantity = req.body.quantity;
     document.price = req.body.price;
     try {
         let result = await document.save();
@@ -67,8 +67,8 @@ exports.gucci_update_put = async function (req, res) {
             toUpdate.Itemname = req.body.Itemname;
         if (req.body.price)
             toUpdate.price = req.body.price;
-        if (req.body.Quantity)
-            toUpdate.Quantity = req.body.Quantity;
+        if (req.body.quantity)
+            toUpdate.quantity = req.body.quantity;
         let result = await toUpdate.save();
         console.log("Sucess " + result);
         res.send(result);
@@ -98,6 +98,35 @@ exports.gucci_view_one_Page = async function (req, res) {
         result = await gucci.findById(req.query.id)
         res.render('guccidetail',
             { title: 'gucci Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle building the view for creating a gucci.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.gucci_create_Page = function (req, res) {
+    console.log("create view")
+    try {
+        res.render('guccicreate', { title: 'gucci Create' });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+
+// Handle building the view for updating a gucci.
+// query provides the id
+exports.gucci_update_Page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await gucci.findById(req.query.id)
+        res.render('gucciupdate', { title: 'gucci Update', toShow: result });
     }
     catch (err) {
         res.status(500)
