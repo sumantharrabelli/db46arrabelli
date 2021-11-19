@@ -4,14 +4,19 @@ block content
   h1= title
   - let results = thegucci
   div(class="container-fuild")
-    div(class="row")
+    div(class="row m-1")
       each result,index in results
-        div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
+        - let destination = `dispatch(\"/guccis/update?id=${result._id}\")`
+        div(class = "row-sm-2 m-1" id=index onclick=`buy(${index})`) 
           p #{result.Itemname}
           p #{result.price}
           p #{result.quantity}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
 
   script.
     function buy(element){
       alert(`You purchased item is ${element+1}.`)
+    }
+    function dispatch(path){
+      window.location.href=path
     }
