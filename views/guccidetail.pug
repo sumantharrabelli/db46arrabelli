@@ -6,19 +6,19 @@ block content
     h2 No instance to display  
   else 
         - let gucciid = toShow._id 
-        - let guccitype = toShow.gucci_type 
-        - let pricep = toShow.price
-        - let quantityq = toShow.quantity
+        - let Itemname = toShow.Itemname 
+        - let price = toShow.price
+        - let quantity = toShow.quantity
   div 
     div.row 
       div(class='gucciAttr mr-3') gucci ID is: 
       div #{gucciid} 
     div.row 
       div(class='gucciAttr mr-3') gucci type is: 
-      div #{guccitype} 
+      div #{Itemname} 
     div.row 
       div(class='gucciAttr mr-3') gucci price is: 
-      div #{pricep} 
+      div #{price} 
     div.row 
       div(class='gucciAttr mr-3') gucci quantity is: 
-      div #{quantityq}
+      div #{quantity}

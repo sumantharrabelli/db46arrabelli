@@ -6,7 +6,7 @@ block content
   div(class="container-fuild")
     div(class="row m-1")
       each result,index in results
-        - let destination = `dispatch(\"/guccis/update?id=${result._id}\")`
+        - let destination = `dispatch(\"/gucci/update?id=${result._id}\")`
         div(class = "row-sm-2 m-1" id=index onclick=`buy(${index})`) 
           p #{result.Itemname}
           p #{result.price}
