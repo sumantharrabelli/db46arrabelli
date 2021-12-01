@@ -1,17 +1,23 @@
 extends layout
 
 block content
+  - let createPage = `dispatch(\"/gucci/create")`
+  button.btn( class="btn-primary ml-1", onclick= createPage) Create
   h1= title
   - let results = thegucci
   div(class="container-fuild")
     div(class="row m-1")
       each result,index in results
         - let destination = `dispatch(\"/gucci/update?id=${result._id}\")`
+        - let detailPage = `dispatch(\"/gucci/detail?id=${result._id}\")`
+        - let deletePage = `dispatch(\"/gucci/delete?id=${result._id}\")`
         div(class = "row-sm-2 m-1" id=index onclick=`buy(${index})`) 
           p #{result.Itemname}
           p #{result.price}
           p #{result.quantity}
           button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-primary ml-1", onclick= detailPage) Detail
+          button.btn( class="btn-primary ml-1", onclick= deletePage) Delete
 
   script.
     function buy(element){
